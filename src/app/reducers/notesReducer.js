@@ -1,4 +1,4 @@
-// src/redux/reducers/notesReducer.js
+
 import { ADD_NOTE, UPDATE_NOTE, DELETE_NOTE, GET_NOTES } from '../actions/notesActions';
 
 const initialState = {
@@ -12,24 +12,24 @@ const notesReducer = (state = initialState, action) => {
     case GET_NOTES:
       return {
         ...state,
-        notes: state.notes,  // If we already have notes, return them (can be modified later for an API call)
+        notes: state.notes,  
       };
     case ADD_NOTE:
       return {
         ...state,
-        notes: [...state.notes, action.payload], // Add the new note to the state
+        notes: [...state.notes, action.payload], 
       };
     case UPDATE_NOTE:
       return {
         ...state,
         notes: state.notes.map((note) =>
-          note.id === action.payload.id ? action.payload : note  // Update the note in the state
+          note.id === action.payload.id ? action.payload : note  
         ),
       };
     case DELETE_NOTE:
       return {
         ...state,
-        notes: state.notes.filter((note) => note.id !== action.payload), // Delete the note from the state
+        notes: state.notes.filter((note) => note.id !== action.payload), 
       };
     default:
       return state;

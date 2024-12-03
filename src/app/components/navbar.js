@@ -1,12 +1,12 @@
 // components/Navbar.js
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // Import usePathname from next/navigation
+import { usePathname } from 'next/navigation'; 
 
 const Navbar = () => {
-  const pathname = usePathname(); // Access the current pathname
+  const pathname = usePathname(); 
 
-  // Function to determine if the current link is active
+
   const isActive = (path) => pathname === path;
 
   return (

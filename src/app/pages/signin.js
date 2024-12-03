@@ -1,4 +1,4 @@
-// pages/signin.js
+
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -14,7 +14,6 @@ const SignInPage = () => {
     console.log('Email:', email);
     console.log('Password:', password);
 
-    // Redirect to home page
     router.push('/');
   };
 

@@ -3,20 +3,20 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNote, deleteNote, updateNote } from '../actions/notesActions';
-import { useFormik } from 'formik'; // Import useFormik from Formik
-import * as Yup from 'yup'; // Import Yup for validation
+import { useFormik } from 'formik'; 
+import * as Yup from 'yup'; 
 
-import Navbar from '../components/navbar';  // Import the Navbar component
+import Navbar from '../components/navbar';  
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const { notes, loading, error } = useSelector((state) => state.notes);
 
-  // State for handling the modal
+
   const [showModal, setShowModal] = useState(false);
   const [newNote, setNewNote] = useState({ title: '', content: '' });
 
-  // Yup validation schema
+
   const validationSchema = Yup.object({
     title: Yup.string()
       .required('Title is required')
@@ -26,22 +26,21 @@ const HomePage = () => {
       .min(5, 'Content must be at least 5 characters'),
   });
 
-  // Formik setup
+
   const formik = useFormik({
     initialValues: { title: '', content: '' },
     validationSchema,
     onSubmit: (values) => {
       if (newNote.id) {
-        dispatch(updateNote(values)); // Update note if editing
+        dispatch(updateNote(values)); 
       } else {
-        dispatch(addNote(values)); // Add new note
+        dispatch(addNote(values)); 
       }
       setNewNote({ title: '', content: '' });
       setShowModal(false);
     },
   });
 
-  // Handling editing note
   const handleEditNote = (id) => {
     const noteToEdit = notes.find(note => note.id === id);
     setNewNote(noteToEdit);
@@ -60,14 +59,16 @@ const HomePage = () => {
     <div>
       <Navbar />
 
+      <h1 className="welcome-text"><b>Good Morning Uma!</b></h1>
       <div className="home-container">
+          
         <h1 className="page-title">Your Notes</h1>
 
         <button className="add-note-btn" onClick={() => setShowModal(true)}>
           + Add New Note
         </button>
 
-        {/* Modal to add or edit a note */}
+
         {showModal && (
           <div className="modal-overlay">
             <div className="modal-container">
@@ -113,7 +114,7 @@ const HomePage = () => {
           </div>
         )}
 
-        {/* Displaying the list of notes */}
+        
         <div className="notes-list">
           {notes.map((note) => (
             <div key={note.id} className="note-card">
@@ -127,7 +128,6 @@ const HomePage = () => {
           ))}
         </div>
 
-        {/* Styles */}
         <style jsx>{`
           .home-container {
             max-width: 1000px;
@@ -136,6 +136,21 @@ const HomePage = () => {
             background-color: #f5f5f5;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          }
+
+          .welcome-text {
+            font-size: 2.5rem;
+            text-align: center;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f0f8ff; /* Light blue background */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
           }
 
           .page-title {

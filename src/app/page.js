@@ -2,7 +2,7 @@
 'use client'; 
 
 import { Provider } from 'react-redux';
-import store from '../app/redux/store'; // Import your Redux store
+import store from '../app/redux/store'; 
 import HomePage from './pages';
 
 function Home() {

@@ -1,4 +1,4 @@
-// pages/signup.js
+
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -14,7 +14,7 @@ const SignUpPage = () => {
     console.log('Email:', email);
     console.log('Password:', password);
 
-    // Redirect to sign-in page
+
     router.push('/signin');
   };
 
